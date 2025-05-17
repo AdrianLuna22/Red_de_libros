@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Por favor, llene todos los campos", Toast.LENGTH_SHORT).show();
         } else if (email.equals("admin@admin.com") && password.equals("1234")) {
             Toast.makeText(this, "Inicio de sesion exitoso", Toast.LENGTH_SHORT).show();
+
         }else {
             Toast.makeText(this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show();
         }

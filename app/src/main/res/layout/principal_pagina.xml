@@ -4,8 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFDFD">
+    android:background="@drawable/buscar">
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="333dp"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true"
+        android:background="#02084B"
+        app:queryHint="Buscar..."
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="16dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -13,7 +23,8 @@
         android:layout_height="236dp"
         app:srcCompat="@drawable/mi_logo"
         tools:layout_editor_absoluteX="89dp"
-        tools:layout_editor_absoluteY="32dp" />
+        tools:layout_editor_absoluteY="89dp"
+        tools:ignore="MissingConstraints" />
 
     <LinearLayout
         android:layout_width="140dp"
@@ -23,16 +34,17 @@
         android:orientation="vertical"
         android:padding="5dp"
         tools:layout_editor_absoluteX="222dp"
-        tools:layout_editor_absoluteY="297dp">
+        tools:layout_editor_absoluteY="297dp"
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/PooBook"
             android:layout_width="104dp"
-            android:layout_height="120dp"
+            android:layout_height="140dp"
             app:srcCompat="@drawable/poo_book" />
 
         <Button
-            android:id="@+id/OfrecerPooBook"
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="37dp"
             android:backgroundTint="#02084B"
@@ -46,42 +58,18 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="5dp"
-        tools:layout_editor_abs
         tools:layout_editor_absoluteX="222dp"
-        tools:layout_editor_absoluteY="497dp">
+        tools:layout_editor_absoluteY="497dp"
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/ProgramacionBook"
             android:layout_width="104dp"
-            android:layout_height="120dp"
+            android:layout_height="140dp"
             app:srcCompat="@drawable/programacion_principantes_book" />
 
         <Button
-            android:id="@+id/OfrecerProgramacionBook"
-            android:layout_width="wrap_content"
-            android:layout_height="37dp"
-            android:backgroundTint="#02084B"
-            android:text="Ofrecer"
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="140dp"
-        android:layout_height="190dp"
-        android:background="@drawable/fondo_redondeado_libros"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="5dp"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="297dp">
-
-        <ImageView
-            android:id="@+id/JavaBook"
-            android:layout_width="104dp"
-            android:layout_height="120dp"
-            app:srcCompat="@drawable/java_book" />
-
-        <Button
-            android:id="@+id/OfrecerJavaBook"
+            android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="37dp"
             android:backgroundTint="#02084B"
@@ -96,16 +84,42 @@
         android:orientation="vertical"
         android:padding="5dp"
         tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="497dp">
+        tools:layout_editor_absoluteY="297dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/JavaBook"
+            android:layout_width="104dp"
+            android:layout_height="140dp"
+            app:srcCompat="@drawable/java_book" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:backgroundTint="#02084B"
+            android:text="Ofrecer" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="140dp"
+        android:layout_height="190dp"
+        android:background="@drawable/fondo_redondeado_libros"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="497dp"
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/PythonBook"
             android:layout_width="104dp"
-            android:layout_height="120dp"
+            android:layout_height="140dp"
             app:srcCompat="@drawable/python_book" />
 
         <Button
-            android:id="@+id/OfrecerPythonBook"
+            android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="37dp"
             android:backgroundTint="#02084B"

@@ -14,7 +14,8 @@
         android:layout_height="239dp"
         app:srcCompat="@drawable/mi_logo"
         tools:layout_editor_absoluteX="69dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp"
+        tools:ignore="MissingConstraints" />
 
     <LinearLayout
         android:layout_width="321dp"
@@ -24,7 +25,8 @@
         android:orientation="vertical"
         android:padding="20dp"
         tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="238dp">
+        tools:layout_editor_absoluteY="238dp"
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/textView"
