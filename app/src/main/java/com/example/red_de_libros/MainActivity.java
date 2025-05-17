@@ -38,13 +38,10 @@ public class MainActivity extends AppCompatActivity {
         String email = emailField.getText().toString().trim();
         String password = passwordField.getText().toString().trim();
 
-        String correctEmail = "admin@admin.com";
-        String correctPassword = "1234"
-
         // validaciones sencillas
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Por favor, llene todos los campos", Toast.LENGTH_SHORT).show();
-        } else if (email == correctEmail && password == correctPassword) {
+        } else if (email.equals("admin@admin.com") && password.equals("1234")) {
             Toast.makeText(this, "Inicio de sesion exitoso", Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show();
