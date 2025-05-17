@@ -12,7 +12,8 @@
         android:layout_height="186dp"
         app:srcCompat="@drawable/mi_logo"
         tools:layout_editor_absoluteX="106dp"
-        tools:layout_editor_absoluteY="84dp" />
+        tools:layout_editor_absoluteY="84dp"
+        tools:ignore="MissingConstraints" />
 
 
     <LinearLayout
@@ -23,7 +24,8 @@
         android:orientation="vertical"
         android:padding="5dp"
         tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="329dp">
+        tools:layout_editor_absoluteY="329dp"
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/JavaBook"
@@ -34,7 +36,7 @@
         <Button
             android:id="@+id/OfrecerJavaBook"
             android:layout_width="wrap_content"
-            android:layout_height="37dp"
+            android:layout_height="48dp"
             android:text="Ofrecer" />
     </LinearLayout>
 
@@ -46,7 +48,8 @@
         android:orientation="vertical"
         android:padding="5dp"
         tools:layout_editor_absoluteX="244dp"
-        tools:layout_editor_absoluteY="329dp">
+        tools:layout_editor_absoluteY="329dp"
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/PooBook"
@@ -57,7 +60,7 @@
         <Button
             android:id="@id/OfrecerPooBook"
             android:layout_width="wrap_content"
-            android:layout_height="37dp"
+            android:layout_height="48dp"
             android:text="Ofrecer" />
     </LinearLayout>
 

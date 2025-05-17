@@ -20,6 +20,7 @@
         android:layout_width="321dp"
         android:layout_height="433dp"
         android:background="@drawable/fondo_redondeado"
+        android:baselineAligned="false"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="20dp"
@@ -37,11 +38,12 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:fontFamily="sans-serif-medium"
+            android:hint="Email"
             android:inputType="textEmailAddress"
             android:textSize="20sp" />
 
@@ -58,17 +60,26 @@
             android:translationY="20dp" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:fontFamily="sans-serif-medium"
+            android:hint="contrasena"
             android:inputType="textPassword"
             android:textSize="20sp"
             android:translationY="20dp" />
 
         <Button
             android:id="@+id/entrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="iniciarSesion"
+            android:text="Entrar"
+            android:translationY="50dp" />
+
+        <Button
+            android:id="@+id/entrar2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="iniciarSesion"

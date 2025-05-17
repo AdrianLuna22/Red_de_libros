@@ -2,7 +2,6 @@ package com.example.red_de_libros;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // campos de texto
-        emailField = findViewById(R.id.email);
-        passwordField = findViewById(R.id.password);
+        emailField = findViewById(R.id.emailEditText);
+        passwordField = findViewById(R.id.passwordEditText);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         String password = passwordField.getText().toString().trim();
 
         String correctEmail = "admin@admin.com";
-        String correctPassword = "1234"
+        String correctPassword = "1234";
 
         // validaciones sencillas
         if (email.isEmpty() || password.isEmpty()) {
