@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "18435716662",
+    "project_id": "red-de-libros",
+    "storage_bucket": "red-de-libros.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18435716662:android:ad407adbb470e11279ca97",
+        "android_client_info": {
+          "package_name": "com.example.red_de_libros"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE3Gi3yqGUbfDY4ag0CQ7Me7sQ33OKpMQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
