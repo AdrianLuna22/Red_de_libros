@@ -17,113 +17,11 @@
         tools:layout_editor_absoluteY="16dp"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="232dp"
-        android:layout_height="236dp"
-        app:srcCompat="@drawable/mi_logo"
-        tools:layout_editor_absoluteX="89dp"
-        tools:layout_editor_absoluteY="89dp"
-        tools:ignore="MissingConstraints" />
-
-    <LinearLayout
-        android:layout_width="140dp"
-        android:layout_height="190dp"
-        android:background="@drawable/fondo_redondeado_libros"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="5dp"
-        tools:layout_editor_absoluteX="222dp"
-        tools:layout_editor_absoluteY="297dp"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/PooBook"
-            android:layout_width="104dp"
-            android:layout_height="140dp"
-            app:srcCompat="@drawable/poo_book" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="37dp"
-            android:backgroundTint="#02084B"
-            android:text="Ofrecer" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="140dp"
-        android:layout_height="190dp"
-        android:background="@drawable/fondo_redondeado_libros"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="5dp"
-        tools:layout_editor_absoluteX="222dp"
-        tools:layout_editor_absoluteY="497dp"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/ProgramacionBook"
-            android:layout_width="104dp"
-            android:layout_height="140dp"
-            app:srcCompat="@drawable/programacion_principantes_book" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="37dp"
-            android:backgroundTint="#02084B"
-            android:text="Ofrecer" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="140dp"
-        android:layout_height="190dp"
-        android:background="@drawable/fondo_redondeado_libros"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="5dp"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="297dp"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/JavaBook"
-            android:layout_width="104dp"
-            android:layout_height="140dp"
-            app:srcCompat="@drawable/java_book" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="37dp"
-            android:backgroundTint="#02084B"
-            android:text="Ofrecer" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="140dp"
-        android:layout_height="190dp"
-        android:background="@drawable/fondo_redondeado_libros"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="5dp"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="497dp"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/PythonBook"
-            android:layout_width="104dp"
-            android:layout_height="140dp"
-            app:srcCompat="@drawable/python_book" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="37dp"
-            android:backgroundTint="#02084B"
-            android:text="Ofrecer" />
-    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLibros"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/search_view"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

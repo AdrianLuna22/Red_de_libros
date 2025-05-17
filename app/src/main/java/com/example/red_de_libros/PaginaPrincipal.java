@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -15,17 +16,33 @@ import androidx.core.view.WindowInsetsCompat;
 
 
 public class PaginaPrincipal extends AppCompatActivity {
-    @SuppressLint("MissingInflatedId")
+    private RecyclerView rvLibros;
+    private LibroAdapter adapter;
+    private FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.principal_pagina);
+        setContetnView(R.layout.principal_pagina);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        db = FirebaseFirestore.getInstance();
+        rvLibros = findViewById(R.id.rvLibros);
+        rvLibros.setLayoutManager(new GridLayoutManager(this, 2));
+
+        cargarLibros();
+    }
+
+    private void cargarLibros() {
+        db.collection("libros")
+                .get()
+                .addOnSuccesListener(queryDocumentSnapshots -> {
+                    List<Libro> libros = new ArrayList <>();
+                    for (DocumentSnapshot doc : queryDocumentSnapshots) {
+                        Libro libro = doc.toObject(Libro.class);
+                        libros.add(libro);
+                    }
+                    adapter = new LibroAdapter(libros);
+                    rvLibros.setAdapter(adapter);
+                });
     }
 }

@@ -1,10 +1,12 @@
 package com.example.red_de_libros;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     private EditText emailField, passwordField;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +25,16 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        mAuth = FirebaseAuth.getInstance();
+
         // campos de texto
         emailField = findViewById(R.id.email);
         passwordField = findViewById(R.id.password);
+        Button btnOlvide = FindViewById(R.id.olvideCon);
+
+        btnOlvide.setOnClickListener(v -> {
+            startActivity(new Intent(this, ForgotPasswordActivity.class));
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -41,11 +51,15 @@ public class MainActivity extends AppCompatActivity {
         // validaciones sencillas
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Por favor, llene todos los campos", Toast.LENGTH_SHORT).show();
-        } else if (email.equals("admin@admin.com") && password.equals("1234")) {
-            Toast.makeText(this, "Inicio de sesion exitoso", Toast.LENGTH_SHORT).show();
-
-        }else {
-            Toast.makeText(this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+        } else {
+            mAuth.sigInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+                if (task.isSuccesful()) {
+                    startActivity(new Intent(this, PaginaPrincipal.cass));
+                    finish();
+                } else {
+                        Toast.makeText(this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
     }
