@@ -4,26 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E5EBEE">
+    android:background="#FDFDFD">
+
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="198dp"
-        android:layout_height="186dp"
+        android:layout_width="232dp"
+        android:layout_height="236dp"
         app:srcCompat="@drawable/mi_logo"
-        tools:layout_editor_absoluteX="106dp"
-        tools:layout_editor_absoluteY="84dp" />
-
+        tools:layout_editor_absoluteX="89dp"
+        tools:layout_editor_absoluteY="32dp" />
 
     <LinearLayout
-        android:layout_width="120dp"
-        android:layout_height="160dp"
-        android:background="@drawable/fondo_redondeado"
+        android:layout_width="140dp"
+        android:layout_height="190dp"
+        android:background="@drawable/fondo_redondeado_libros"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="5dp"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="329dp">
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="297dp">
+
+        <ImageView
+            android:id="@+id/PooBook"
+            android:layout_width="104dp"
+            android:layout_height="120dp"
+            app:srcCompat="@drawable/poo_book" />
+
+        <Button
+            android:id="@+id/OfrecerPooBook"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:backgroundTint="#02084B"
+            android:text="Ofrecer" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="140dp"
+        android:layout_height="190dp"
+        android:background="@drawable/fondo_redondeado_libros"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp"
+        tools:layout_editor_abs
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="497dp">
+
+        <ImageView
+            android:id="@+id/ProgramacionBook"
+            android:layout_width="104dp"
+            android:layout_height="120dp"
+            app:srcCompat="@drawable/programacion_principantes_book" />
+
+        <Button
+            android:id="@+id/OfrecerProgramacionBook"
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:backgroundTint="#02084B"
+            android:text="Ofrecer"
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="140dp"
+        android:layout_height="190dp"
+        android:background="@drawable/fondo_redondeado_libros"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="297dp">
 
         <ImageView
             android:id="@+id/JavaBook"
@@ -35,29 +84,31 @@
             android:id="@+id/OfrecerJavaBook"
             android:layout_width="wrap_content"
             android:layout_height="37dp"
+            android:backgroundTint="#02084B"
             android:text="Ofrecer" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="120dp"
-        android:layout_height="160dp"
-        android:background="@drawable/fondo_redondeado"
+        android:layout_width="140dp"
+        android:layout_height="190dp"
+        android:background="@drawable/fondo_redondeado_libros"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="5dp"
-        tools:layout_editor_absoluteX="244dp"
-        tools:layout_editor_absoluteY="329dp">
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="497dp">
 
         <ImageView
-            android:id="@+id/PooBook"
+            android:id="@+id/PythonBook"
             android:layout_width="104dp"
             android:layout_height="120dp"
-            app:srcCompat="@drawable/poo_book" />
+            app:srcCompat="@drawable/python_book" />
 
         <Button
-            android:id="@id/OfrecerPooBook"
+            android:id="@+id/OfrecerPythonBook"
             android:layout_width="wrap_content"
             android:layout_height="37dp"
+            android:backgroundTint="#02084B"
             android:text="Ofrecer" />
     </LinearLayout>
 
