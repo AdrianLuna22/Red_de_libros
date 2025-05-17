@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5EBEE"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="198dp"
+        android:layout_height="186dp"
+        app:srcCompat="@drawable/mi_logo"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="26dp" />
+
+    <LinearLayout
+        android:layout_width="321dp"
+        android:layout_height="433dp"
+        android:background="@drawable/fondo_redondeado"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="238dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Correo"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="sans-serif-medium"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Contraseña"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#2B2D30"
+            android:textSize="20sp"
+            android:translationY="20dp" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="sans-serif-medium"
+            android:inputType="textPassword"
+            android:textSize="20sp"
+            android:translationY="20dp" />
+
+        <Button
+            android:id="@+id/entrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="iniciarSesion"
+            android:text="Entrar"
+            android:translationY="50dp" />
+
+        <Button
+            android:id="@+id/olvideCon"
+            android:layout_width="123dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CAC6B6"
+            android:foregroundTint="#F49696"
+            android:maxWidth="150dp"
+            android:text="Olvide mi contraseña"
+            android:textColor="#050505"
+            android:textColorLink="#CAC6B6"
+            android:translationY="70dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
