@@ -10,23 +10,24 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="273dp"
-        android:layout_height="239dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:srcCompat="@drawable/mi_logo"
-        tools:layout_editor_absoluteX="69dp"
-        tools:layout_editor_absoluteY="16dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
 
     <LinearLayout
-        android:layout_width="321dp"
-        android:layout_height="433dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/fondo_redondeado"
-        android:gravity="center"
         android:orientation="vertical"
         android:padding="20dp"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="238dp"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp">
 
         <TextView
             android:id="@+id/textView"
