@@ -21,6 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ForgotPasswordActivity"
+            android:label="Recuperar contraseña"/>
+
+        <!-- y también tu PaginaPrincipal si aún no está -->
+        <activity android:name=".PaginaPrincipal"/>
     </application>
 
 </manifest>

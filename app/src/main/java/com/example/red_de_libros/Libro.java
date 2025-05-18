@@ -1,14 +1,21 @@
 package com.example.red_de_libros;
+
 public class Libro {
-    private String titulo;
-    private String autor;
-    private String duenoId;
+    private String titulo, autor, duenoId;
     private int año;
 
-    public Libro() {}
+    // Constructor
+    public  Libro(String titulo) {
+        this.titulo = titulo;
+    }
 
-    public String getTitulo() { return titulo; }
-    public String getAutor() { return autor; }
-    public String getDuenoId() { return duenoId; }
-    public int getAño() { return año; }
+    // Getter para el titulo (IMPORTANTE)
+    public String getTitulo() {
+        return titulo;
+    }
+
+    // Setter (opcional)
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 }

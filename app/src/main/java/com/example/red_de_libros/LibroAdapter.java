@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.ViewHolder> {
-
     private List<Libro> libros;
 
     public LibroAdapter(List<Libro> libros) {
@@ -31,12 +30,12 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Libro libro = libros.get(position);
         holder.tvTitulo.setText(libro.getTitulo());
-        // Puedes agregar más datos aquí si deseas (autor, año, etc.)
+        // Configurar imagen con Glide/Picasso
     }
 
     @Override
     public int getItemCount() {
-        return libros.size();
+        return libros != null ? libros.size() : 0;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
