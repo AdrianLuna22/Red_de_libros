@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:18435716662:android:ad407adbb470e11279ca97",
+        "mobilesdk_app_id": "1:18435716662:android:06f80d52b6d7c28979ca97",
         "android_client_info": {
           "package_name": "com.example.red_de_libros"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "18435716662-oghck52q4tfha1vtpqvdbh0jgn4nse4o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDE3Gi3yqGUbfDY4ag0CQ7Me7sQ33OKpMQ"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18435716662-oghck52q4tfha1vtpqvdbh0jgn4nse4o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

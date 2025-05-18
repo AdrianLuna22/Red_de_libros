@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         // campos de texto
         emailField = findViewById(R.id.email);
         passwordField = findViewById(R.id.password);
-        Button btnOlvide = FindViewById(R.id.olvideCon);
+        Button btnOlvide = findViewById(R.id.olvideCon);
 
         btnOlvide.setOnClickListener(v -> {
             startActivity(new Intent(this, ForgotPasswordActivity.class));
@@ -52,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Por favor, llene todos los campos", Toast.LENGTH_SHORT).show();
         } else {
-            mAuth.sigInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-                if (task.isSuccesful()) {
-                    startActivity(new Intent(this, PaginaPrincipal.cass));
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    startActivity(new Intent(this, PaginaPrincipal.class));
                     finish();
                 } else {
                         Toast.makeText(this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
