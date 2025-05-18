@@ -14,6 +14,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
@@ -28,25 +30,27 @@ public class PaginaPrincipal extends AppCompatActivity {
     private LibroAdapter adapter;
     private FirebaseFirestore db;
     private SearchView searchView;
-
-    private EditText searchEditText;
-
-    private List<Libro> listaOriginal = new ArrayList<>(); // Todos los libros
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private List<Libro> listaOriginal = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principal_pagina);
 
-        db = FirebaseFirestore.getInstance();
+        // Inicializa vistas
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         rvLibros = findViewById(R.id.rvLibros);
+        searchView = findViewById(R.id.search_view);
+        db = FirebaseFirestore.getInstance();
+
+        // Configura RecyclerView
         rvLibros.setLayoutManager(new GridLayoutManager(this, 2));
 
-        searchView = findViewById(R.id.search_view);
+        // Swipe to refresh
+        swipeRefreshLayout.setOnRefreshListener(this::cargarLibros);
 
-        cargarLibros();
-
-        // Escuchar búsquedas
+        // Búsqueda
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -61,7 +65,8 @@ public class PaginaPrincipal extends AppCompatActivity {
             }
         });
 
-
+        // Carga inicial
+        cargarLibros();
     }
 
     private void cargarLibros() {
@@ -71,11 +76,21 @@ public class PaginaPrincipal extends AppCompatActivity {
                     listaOriginal.clear();
                     for (DocumentSnapshot doc : queryDocumentSnapshots) {
                         Libro libro = doc.toObject(Libro.class);
-                        listaOriginal.add(libro);
+                        if (libro != null) {
+                            listaOriginal.add(libro);
+                        }
                     }
-
-                    adapter = new LibroAdapter(listaOriginal);
-                    rvLibros.setAdapter(adapter);
+                    if (adapter == null) {
+                        adapter = new LibroAdapter(listaOriginal);
+                        rvLibros.setAdapter(adapter);
+                    } else {
+                        adapter.actualizarLista(listaOriginal);
+                    }
+                    swipeRefreshLayout.setRefreshing(false);
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error al cargar libros: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    swipeRefreshLayout.setRefreshing(false);
                 });
     }
 
