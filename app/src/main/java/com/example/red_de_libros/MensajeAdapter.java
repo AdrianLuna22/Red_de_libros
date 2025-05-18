@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,13 @@ public class MensajeAdapter extends RecyclerView.Adapter<MensajeAdapter.ViewHold
     private String currentUserId;
 
     public MensajeAdapter() {
-        currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            currentUserId = user.getUid();
+        } else {
+            currentUserId = ""; // O manejar el caso adecuadamente
+        }
+
     }
 
     @NonNull

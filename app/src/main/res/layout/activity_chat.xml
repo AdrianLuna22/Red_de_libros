@@ -35,7 +35,8 @@
             android:id="@+id/btnEnviar"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"/>
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_send" />
 
     </LinearLayout>
 

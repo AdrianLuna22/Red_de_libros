@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -59,12 +60,27 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Mensaje mensaje = snapshot.getValue(Mensaje.class);
-                if(mensaje != null) {
+                if (mensaje != null && mensaje.getTexto() != null && mensaje.getUsuarioId() != null) {
                     adapter.addMensaje(mensaje);
                     rvMensajes.smoothScrollToPosition(adapter.getItemCount() - 1);
                 }
+
             }
-            //... otros métodos del ChildEventListener
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ChatActivity.this, "Error al cargar mensajes: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
         });
 
         // Enviar mensaje
