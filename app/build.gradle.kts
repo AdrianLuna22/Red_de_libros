@@ -44,6 +44,6 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
-
+    implementation("com.google.firebase:firebase-firestore:24.10.3")
     implementation("com.google.firebase:firebase-analytics")
 }
