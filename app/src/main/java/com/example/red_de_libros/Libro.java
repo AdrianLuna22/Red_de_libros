@@ -1,21 +1,18 @@
 package com.example.red_de_libros;
 
 public class Libro {
-    private String titulo, autor, duenoId;
+    private String titulo;
+    private String autor;
+    private String duenoId;
     private int año;
+    private String portadaUrl; // URL de Imgur
 
-    // Constructor
-    public  Libro(String titulo) {
-        this.titulo = titulo;
-    }
+    public Libro() {} // Requerido para Firestore
 
-    // Getter para el titulo (IMPORTANTE)
-    public String getTitulo() {
-        return titulo;
-    }
-
-    // Setter (opcional)
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+    // Getters
+    public String getTitulo() { return titulo; }
+    public String getAutor() { return autor; }
+    public String getDuenoId() { return duenoId; }
+    public int getAño() { return año; }
+    public String getPortadaUrl() { return portadaUrl; }
 }

@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(this, PaginaPrincipal.class));
                     finish();
                 } else {
-                        Toast.makeText(this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
