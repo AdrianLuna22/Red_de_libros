@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import androidx.appcompat.widget.SearchView;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,12 +19,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.red_de_libros.Libro;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 
 public class PaginaPrincipal extends AppCompatActivity {
     private RecyclerView rvLibros;
     private LibroAdapter adapter;
     private FirebaseFirestore db;
+    private SearchView searchView;
+
+    private EditText searchEditText;
+
+    private List<Libro> listaOriginal = new ArrayList<>(); // Todos los libros
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,29 +42,51 @@ public class PaginaPrincipal extends AppCompatActivity {
         rvLibros = findViewById(R.id.rvLibros);
         rvLibros.setLayoutManager(new GridLayoutManager(this, 2));
 
+        searchView = findViewById(R.id.search_view);
+
         cargarLibros();
+
+        // Escuchar búsquedas
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filtrarLibros(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filtrarLibros(newText);
+                return true;
+            }
+        });
+
+
     }
 
     private void cargarLibros() {
         db.collection("libros")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    List<Libro> libros = new ArrayList<>();
+                    listaOriginal.clear();
                     for (DocumentSnapshot doc : queryDocumentSnapshots) {
                         Libro libro = doc.toObject(Libro.class);
-                        libros.add(libro);
+                        listaOriginal.add(libro);
                     }
 
-                    if (libros.isEmpty()) {
-                        Toast.makeText(this, "No hay libros disponibles.", Toast.LENGTH_SHORT).show();
-                    }
-
-                    adapter = new LibroAdapter(libros);
+                    adapter = new LibroAdapter(listaOriginal);
                     rvLibros.setAdapter(adapter);
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Error al cargar libros: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
     }
 
+    private void filtrarLibros(String texto) {
+        List<Libro> filtrados = new ArrayList<>();
+        for (Libro libro : listaOriginal) {
+            if (libro.getTitulo().toLowerCase().contains(texto.toLowerCase()) ||
+                    libro.getAutor().toLowerCase().contains(texto.toLowerCase())) {
+                filtrados.add(libro);
+            }
+        }
+        adapter.actualizarLista(filtrados);
+    }
 }

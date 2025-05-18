@@ -62,6 +62,11 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.ViewHolder> 
             tvDueno = itemView.findViewById(R.id.tvDueno);
         }
     }
+
+    public void actualizarLista(List<Libro> nuevaLista) {
+        this.libros = nuevaLista;
+        notifyDataSetChanged();
+    }
 }
 
 
