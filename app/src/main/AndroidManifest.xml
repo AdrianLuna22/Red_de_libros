@@ -24,8 +24,8 @@
         <activity android:name=".ForgotPasswordActivity"
             android:label="Recuperar contraseña"/>
 
-        <!-- y también tu PaginaPrincipal si aún no está -->
         <activity android:name=".PaginaPrincipal"/>
+        <activity android:name=".RegistroActivity" />
     </application>
 
 </manifest>

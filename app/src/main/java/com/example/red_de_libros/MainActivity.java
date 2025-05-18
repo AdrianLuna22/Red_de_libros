@@ -32,10 +32,16 @@ public class MainActivity extends AppCompatActivity {
         // campos de texto
         emailField = findViewById(R.id.email);
         passwordField = findViewById(R.id.password);
+        Button btnRegistrar = findViewById(R.id.btnRegistrar);
+
         Button btnOlvide = findViewById(R.id.olvideCon);
 
         btnOlvide.setOnClickListener(v -> {
             startActivity(new Intent(this, ForgotPasswordActivity.class));
+        });
+
+        btnRegistrar.setOnClickListener(v -> {
+            startActivity(new Intent(this, RegistroActivity.class));
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -65,4 +71,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
+
 }

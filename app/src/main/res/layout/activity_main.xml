@@ -10,23 +10,23 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/mi_logo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="329dp"
+        android:layout_height="318dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mi_logo" />
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_width="386dp"
+        android:layout_height="338dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/fondo_redondeado"
         android:orientation="vertical"
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView">
 
@@ -80,6 +80,13 @@
             android:translationY="50dp" />
 
         <Button
+            android:id="@+id/btnRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Crear cuenta nueva"
+            android:translationY="50dp" />
+
+        <Button
             android:id="@+id/olvideCon"
             android:layout_width="123dp"
             android:layout_height="wrap_content"
@@ -90,5 +97,7 @@
             android:textColor="#050505"
             android:textColorLink="#CAC6B6"
             android:translationY="70dp" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
