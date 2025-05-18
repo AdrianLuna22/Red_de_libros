@@ -38,8 +38,9 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.ViewHolder> 
         holder.tvDueno.setText("Dueño: " + libro.getDuenoId());
 
         Glide.with(holder.itemView.getContext())
-                .load(libro.getPortadaUrl()) // URL de Imgur
-                .placeholder(R.drawable.ic_launcher_background) // Puedes usar un drawable temporal
+                .load(libro.getPortadaUrl())
+                .placeholder(R.drawable.ic_launcher_background)
+                .centerCrop()  // mejora visual
                 .into(holder.ivPortada);
     }
 

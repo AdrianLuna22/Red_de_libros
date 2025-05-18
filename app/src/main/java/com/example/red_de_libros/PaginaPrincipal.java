@@ -46,9 +46,17 @@ public class PaginaPrincipal extends AppCompatActivity {
                         Libro libro = doc.toObject(Libro.class);
                         libros.add(libro);
                     }
+
+                    if (libros.isEmpty()) {
+                        Toast.makeText(this, "No hay libros disponibles.", Toast.LENGTH_SHORT).show();
+                    }
+
                     adapter = new LibroAdapter(libros);
                     rvLibros.setAdapter(adapter);
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error al cargar libros: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
-
     }
+
 }
