@@ -1,5 +1,6 @@
 package com.example.red_de_libros;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,17 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.ViewHolder> 
                 .placeholder(R.drawable.ic_launcher_background)
                 .centerCrop()  // mejora visual
                 .into(holder.ivPortada);
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), PreviewLibroActivity.class);
+            intent.putExtra("titulo", libro.getTitulo());
+            intent.putExtra("autor", libro.getAutor());
+            intent.putExtra("anio", libro.getAño());
+            intent.putExtra("dueno", libro.getDuenoId());
+            intent.putExtra("url", libro.getPortadaUrl());
+            v.getContext().startActivity(intent);
+        });
+
     }
 
     @Override
