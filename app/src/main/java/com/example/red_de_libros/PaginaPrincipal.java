@@ -79,7 +79,7 @@ public class PaginaPrincipal extends AppCompatActivity {
             if (id == R.id.menu_agregar_libro) {
                 startActivity(new Intent(this, AgregarLibroActivity.class));
             } else if (id == R.id.menu_chat) {
-                startActivity(new Intent(this, ChatActivity.class));
+                startActivity(new Intent(this, HistorialChatsActivity.class));
             } else if (id == R.id.menu_cerrar_sesion) {
                 cerrarSesion();
             }
