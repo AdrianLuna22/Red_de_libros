@@ -50,6 +50,7 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.ViewHolder> 
             intent.putExtra("autor", libro.getAutor());
             intent.putExtra("anio", libro.getAño());
             intent.putExtra("dueno", libro.getDuenoNombre());
+            intent.putExtra("duenoId", libro.getDuenoId());
             intent.putExtra("url", libro.getPortadaUrl());
             v.getContext().startActivity(intent);
         });

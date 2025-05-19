@@ -1,64 +1,59 @@
 package com.example.red_de_libros;
 
-import android.text.format.DateUtils;
-import android.view.Gravity;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MensajeAdapter extends RecyclerView.Adapter<MensajeAdapter.ViewHolder> {
+public class MensajeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private static final int MENSAJE_ENVIADO = 1;
+    private static final int MENSAJE_RECIBIDO = 2;
 
-    private List<Mensaje> mensajes = new ArrayList<>();
+    private List<Mensaje> mensajes;
     private String currentUserId;
 
-    public MensajeAdapter() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            currentUserId = user.getUid();
-        } else {
-            currentUserId = ""; // O manejar el caso adecuadamente
-        }
+    public MensajeAdapter(List<Mensaje> mensajes) {
+        this.mensajes = mensajes;
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        this.currentUserId = auth.getCurrentUser() != null ? auth.getCurrentUser().getUid() : "";
+    }
 
+    @Override
+    public int getItemViewType(int position) {
+        Mensaje mensaje = mensajes.get(position);
+        return mensaje.getEmisorId().equals(currentUserId) ? MENSAJE_ENVIADO : MENSAJE_RECIBIDO;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_mensaje, parent, false);
-        return new ViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (viewType == MENSAJE_ENVIADO) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_mensaje_enviado, parent, false);
+            return new MensajeEnviadoHolder(view);
+        } else {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_mensaje_recibido, parent, false);
+            return new MensajeRecibidoHolder(view);
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Mensaje mensaje = mensajes.get(position);
 
-        holder.tvNombre.setText(mensaje.getNombreUsuario());
-        holder.tvMensaje.setText(mensaje.getTexto());
-        holder.tvHora.setText(DateUtils.formatDateTime(
-                holder.itemView.getContext(),
-                mensaje.getTimestamp(),
-                DateUtils.FORMAT_SHOW_TIME
-        ));
-
-        // Alinear mensajes propios a la derecha
-        if(mensaje.getUsuarioId().equals(currentUserId)) {
-            holder.lyMensaje.setBackgroundResource(R.drawable.bg_mi_mensaje);
-            ((LinearLayout.LayoutParams) holder.lyMensaje.getLayoutParams()).gravity = Gravity.END;
+        if (holder.getItemViewType() == MENSAJE_ENVIADO) {
+            ((MensajeEnviadoHolder) holder).bind(mensaje);
         } else {
-            holder.lyMensaje.setBackgroundResource(R.drawable.bg_otro_mensaje);
-            ((LinearLayout.LayoutParams) holder.lyMensaje.getLayoutParams()).gravity = Gravity.START;
+            ((MensajeRecibidoHolder) holder).bind(mensaje);
         }
     }
 
@@ -67,21 +62,40 @@ public class MensajeAdapter extends RecyclerView.Adapter<MensajeAdapter.ViewHold
         return mensajes.size();
     }
 
-    public void addMensaje(Mensaje mensaje) {
-        mensajes.add(mensaje);
-        notifyItemInserted(mensajes.size() - 1);
+    public void setMensajes(List<Mensaje> mensajes) {
+        this.mensajes = mensajes;
+        notifyDataSetChanged();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout lyMensaje;
-        TextView tvNombre, tvMensaje, tvHora;
+    // ViewHolder para mensajes enviados (derecha)
+    private static class MensajeEnviadoHolder extends RecyclerView.ViewHolder {
+        TextView tvMensaje, tvHora;
 
-        public ViewHolder(@NonNull View itemView) {
+        MensajeEnviadoHolder(View itemView) {
             super(itemView);
-            lyMensaje = itemView.findViewById(R.id.lyMensaje);
-            tvNombre = itemView.findViewById(R.id.tvNombre);
             tvMensaje = itemView.findViewById(R.id.tvMensaje);
             tvHora = itemView.findViewById(R.id.tvHora);
+        }
+
+        void bind(Mensaje mensaje) {
+            tvMensaje.setText(mensaje.getTexto());
+            tvHora.setText(DateFormat.format("HH:mm", mensaje.getTimestamp()));
+        }
+    }
+
+    // ViewHolder para mensajes recibidos (izquierda)
+    private static class MensajeRecibidoHolder extends RecyclerView.ViewHolder {
+        TextView tvMensaje, tvHora;
+
+        MensajeRecibidoHolder(View itemView) {
+            super(itemView);
+            tvMensaje = itemView.findViewById(R.id.tvMensaje);
+            tvHora = itemView.findViewById(R.id.tvHora);
+        }
+
+        void bind(Mensaje mensaje) {
+            tvMensaje.setText(mensaje.getTexto());
+            tvHora.setText(DateFormat.format("HH:mm", mensaje.getTimestamp()));
         }
     }
 }

@@ -64,6 +64,16 @@
                 android:text="Dueño"
                 android:textSize="18sp"
                 android:paddingTop="8dp"/>
+
+            <!-- Agrega esto al final del LinearLayout de contenido (antes del cierre) -->
+            <Button
+                android:id="@+id/btnEnviarMensaje"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Enviar mensaje"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@android:color/white"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

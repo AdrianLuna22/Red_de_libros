@@ -6,15 +6,27 @@
     android:layout_height="match_parent"
     android:padding="8dp">
 
-    <!-- Lista de mensajes -->
+    <!-- Agrega esta Toolbar como primer elemento -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="Chat"
+        app:titleTextColor="@android:color/white"/>
+
+    <!-- Lista de mensajes (ajusta para que aparezca debajo de la Toolbar) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMensajes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
         android:layout_above="@id/lyEnviarMensaje"
         android:paddingBottom="8dp"/>
 
-    <!-- Contenedor para enviar mensajes -->
+    <!-- Contenedor para enviar mensajes (se mantiene igual) -->
     <LinearLayout
         android:id="@+id/lyEnviarMensaje"
         android:layout_width="match_parent"
