@@ -53,4 +53,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:24.10.3")
     implementation("com.google.firebase:firebase-auth:22.3.0")
     implementation("com.google.firebase:firebase-analytics")
+    implementation ("androidx.appcompat:appcompat:1.6.1")
+    implementation ("com.google.android.material:material:1.9.0")
+    implementation ("androidx.drawerlayout:drawerlayout:1.2.0")
 }

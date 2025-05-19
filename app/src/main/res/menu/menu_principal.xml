@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_agregar_libro"
+        android:title="Agregar Libro"
+        android:icon="@drawable/ic_add_book" />
+
+    <item
+        android:id="@+id/menu_chat"
+        android:title="Chat"
+        android:icon="@drawable/ic_chat" />
+
+    <item
+        android:id="@+id/menu_cerrar_sesion"
+        android:title="Cerrar Sesión"
+        android:icon="@drawable/ic_logout" />
+</menu>
