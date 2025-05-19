@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class AgregarLibroActivity extends AppCompatActivity {
 
-    private EditText etTitulo, etAutor, etAnio, etDueno, etPortadaUrl;
+    private EditText etTitulo, etAutor, etAnio, etPortadaUrl;
     private Button btnSubirLibro;
     private ImageView ivPreview;
     private FirebaseFirestore db;
@@ -43,7 +43,6 @@ public class AgregarLibroActivity extends AppCompatActivity {
         etTitulo = findViewById(R.id.etTitulo);
         etAutor = findViewById(R.id.etAutor);
         etAnio = findViewById(R.id.etAnio);
-        etDueno = findViewById(R.id.etDueno);
         etPortadaUrl = findViewById(R.id.etPortadaUrl);
         btnSubirLibro = findViewById(R.id.btnSubirLibro);
         ivPreview = findViewById(R.id.ivPreview);
@@ -52,12 +51,6 @@ public class AgregarLibroActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Subiendo libro...");
         progressDialog.setCancelable(false);
-
-        // Autocompletar dueño con el usuario actual
-        FirebaseUser usuario = mAuth.getCurrentUser();
-        if (usuario != null) {
-            etDueno.setText(usuario.getDisplayName());
-        }
 
         // Preview de imagen al cambiar URL
         etPortadaUrl.addTextChangedListener(new TextWatcher() {
@@ -95,9 +88,7 @@ public class AgregarLibroActivity extends AppCompatActivity {
         String autor = etAutor.getText().toString().trim();
         String añoStr = etAnio.getText().toString().trim();
         String portadaUrl = etPortadaUrl.getText().toString().trim();
-        String duenoId = mAuth.getCurrentUser().getUid();
 
-        // Validaciones
         if (titulo.isEmpty()) {
             etTitulo.setError("Ingrese el título");
             return;
@@ -121,25 +112,47 @@ public class AgregarLibroActivity extends AppCompatActivity {
 
         progressDialog.show();
 
-        // Crear objeto Libro
-        Map<String, Object> libro = new HashMap<>();
-        libro.put("titulo", titulo);
-        libro.put("autor", autor);
-        libro.put("año", año);
-        libro.put("duenoId", duenoId);
-        libro.put("portadaUrl", portadaUrl);
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user == null) {
+            Toast.makeText(this, "No hay usuario autenticado", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        // Subir a Firestore
-        db.collection("libros")
-                .add(libro)
-                .addOnSuccessListener(documentReference -> {
-                    progressDialog.dismiss();
-                    Toast.makeText(this, "Libro subido exitosamente", Toast.LENGTH_SHORT).show();
-                    finish();
+        String uid = user.getUid();
+
+        // Buscar el nombre del usuario en Firestore usando el UID
+        db.collection("usuarios").document(uid).get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String nombreDueno = documentSnapshot.getString("nombre");
+
+                        Map<String, Object> libro = new HashMap<>();
+                        libro.put("titulo", titulo);
+                        libro.put("autor", autor);
+                        libro.put("año", año);
+                        libro.put("duenoId", uid);
+                        libro.put("duenoNombre", nombreDueno);
+                        libro.put("portadaUrl", portadaUrl);
+
+                        db.collection("libros").add(libro)
+                                .addOnSuccessListener(documentReference -> {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(this, "Libro subido exitosamente", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                })
+                                .addOnFailureListener(e -> {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(this, "Error al subir libro: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                });
+                    } else {
+                        progressDialog.dismiss();
+                        Toast.makeText(this, "No se encontró información del usuario", Toast.LENGTH_SHORT).show();
+                    }
                 })
                 .addOnFailureListener(e -> {
                     progressDialog.dismiss();
-                    Toast.makeText(this, "Error al subir libro: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Error al obtener datos del usuario: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
+
 }

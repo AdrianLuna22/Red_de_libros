@@ -56,21 +56,6 @@
                 android:inputType="number"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Campo: Dueño (autocompletado) -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDueno"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Dueño"
-                android:inputType="textCapWords"
-                android:enabled="false"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
         <!-- Campo: URL de la imagen -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
