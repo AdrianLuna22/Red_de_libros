@@ -36,7 +36,7 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.ViewHolder> 
         holder.tvTitulo.setText(libro.getTitulo());
         holder.tvAutor.setText("Autor: " + libro.getAutor());
         holder.tvAnio.setText("Año: " + libro.getAño());
-        holder.tvDueno.setText("Dueño: " + libro.getDuenoId());
+        holder.tvDueno.setText("Dueño: " + libro.getDuenoNombre());
 
         Glide.with(holder.itemView.getContext())
                 .load(libro.getPortadaUrl())
@@ -49,7 +49,7 @@ public class LibroAdapter extends RecyclerView.Adapter<LibroAdapter.ViewHolder> 
             intent.putExtra("titulo", libro.getTitulo());
             intent.putExtra("autor", libro.getAutor());
             intent.putExtra("anio", libro.getAño());
-            intent.putExtra("dueno", libro.getDuenoId());
+            intent.putExtra("dueno", libro.getDuenoNombre());
             intent.putExtra("url", libro.getPortadaUrl());
             v.getContext().startActivity(intent);
         });
